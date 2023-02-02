@@ -5,7 +5,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -28,10 +28,8 @@ public class Client {
     private String phone;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private Set<Membership> memberships;
+    private Set<Membership> memberships = new HashSet<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private Set<Visit> visits;
-
-    // getters and setters
+    private Set<Visit> visits = new HashSet<>();
 }

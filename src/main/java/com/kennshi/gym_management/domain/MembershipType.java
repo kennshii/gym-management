@@ -3,6 +3,8 @@ package com.kennshi.gym_management.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -17,11 +19,11 @@ public class MembershipType {
     private Long id;
 
     private String name;
-    private Integer price;
+    private BigDecimal price;
     private Integer maxVisits;
 
     @OneToMany(mappedBy = "membershipType", cascade = CascadeType.ALL)
-    private Set<Membership> memberships;
+    private Set<Membership> memberships = new HashSet<>();
 
     // getters and setters
 }
