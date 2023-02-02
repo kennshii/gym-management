@@ -10,9 +10,9 @@ import java.time.LocalDate;
  */
 @Data
 public class ClientDto implements Serializable {
-    private final Long id;
-    private final String name;
-    private final String email;
-    private final LocalDate birthday;
-    private final String phone;
+    private Long id;
+    private String name;
+    private String email;
+    private LocalDate birthday;
+    private String phone;
 }

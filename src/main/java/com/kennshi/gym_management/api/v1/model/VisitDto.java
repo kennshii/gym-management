@@ -1,6 +1,7 @@
 package com.kennshi.gym_management.api.v1.model;
 
 import com.kennshi.gym_management.domain.Visit;
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,8 +12,9 @@ import java.time.LocalTime;
  * A DTO for the {@link Visit} entity
  */
 @Data
+@Builder
 public class VisitDto implements Serializable {
-    private final Long id;
-    private final LocalDate date;
-    private final LocalTime startTime;
+    private Long id;
+    private LocalDate date;
+    private LocalTime startTime;
 }
