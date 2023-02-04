@@ -1,4 +1,4 @@
-package com.kennshi.gym_management.controller;
+package com.kennshi.gym_management.controller.v1;
 
 import com.kennshi.gym_management.api.v1.model.VisitDto;
 import com.kennshi.gym_management.service.VisitService;
