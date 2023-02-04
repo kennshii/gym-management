@@ -39,7 +39,7 @@ public class MembershipController {
     @ResponseStatus(HttpStatus.OK)
     public MembershipDto updateMembership(@PathVariable Long clientId, @PathVariable Long membershipId,
                                           @RequestBody MembershipDto membershipDto) {
-        return membershipService.updateMembership(clientId, membershipDto);
+        return membershipService.updateMembership(clientId, membershipId, membershipDto);
     }
 
     @DeleteMapping("/clients/{clientId}/memberships/{membershipId}")

@@ -12,7 +12,7 @@ public interface MembershipService {
 
     MembershipDto createNewMembership(Long id, MembershipDto membershipDto);
 
-    MembershipDto updateMembership(Long clientId, MembershipDto membershipDto);
+    MembershipDto updateMembership(Long clientId, Long membershipId, MembershipDto membershipDto);
 
 //    MembershipDto patchMembership(Long id, MembershipDto membershipDto);
 

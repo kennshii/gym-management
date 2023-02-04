@@ -41,6 +41,7 @@ public class MembershipServiceImpl implements MembershipService {
                 .orElseThrow(RuntimeException::new);
     }
 
+    //todo - or enhance methods, maybe put and post implementation need to be different
     @Override
     public MembershipDto createNewMembership(Long clientId,MembershipDto membershipDto) {
 
@@ -53,22 +54,25 @@ public class MembershipServiceImpl implements MembershipService {
         return membershipMapper.toMembershipDTO(membership);
     }
 
-    //todo - fix bug with adding a membership without a assigned client
+    //todo - fix bug when adding a membership without an assigned client
     @Override
-    public MembershipDto updateMembership(Long clientId, MembershipDto membershipDto) {
+    public MembershipDto updateMembership(Long clientId, Long membershipId, MembershipDto membershipDto) {
 
-        Membership updatedMembership = membershipMapper.toMembership(membershipDto);
-        //saving membership
-        membershipRepository.save(updatedMembership);
-        assignMembershipToClient(clientId, updatedMembership.getId());
+        Membership membership = membershipRepository.findById(membershipId)
+                .orElseThrow(() -> new EntityNotFoundException("Membership not found with id " + membershipId));
 
-//        membershipRepository.findAll().forEach(membership -> {
-//            if (membership.getClient() == null)
-//                deleteById(membership.getId());
-//            log.debug("Membership without client was deleted");
-//        });
+        Membership membershipToUpdate = membershipMapper.toMembership(membershipDto);
 
-        return membershipDto;
+        //checking if if from dto equals with id from repo for further update
+        if (membershipToUpdate.getId().equals(membership.getId())) {
+            //saving membership
+            membershipRepository.save(membershipToUpdate);
+            assignMembershipToClient(clientId, membershipToUpdate.getId());
+        } else {
+            throw new RuntimeException();
+        }
+
+        return membershipMapper.toMembershipDTO(membershipToUpdate);
     }
 
     @Override
@@ -76,6 +80,7 @@ public class MembershipServiceImpl implements MembershipService {
         membershipRepository.deleteById(id);
     }
 
+    //todo - better exception handling. Clearer error in json
     private ClientDto assignMembershipToClient(Long clientId, Long membershipId) {
 
         Client client = clientRepository.findById(clientId)

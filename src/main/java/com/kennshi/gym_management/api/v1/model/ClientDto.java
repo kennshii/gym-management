@@ -15,4 +15,5 @@ public class ClientDto implements Serializable {
     private String email;
     private LocalDate birthday;
     private String phone;
+    //todo - add path or url of entity
 }
