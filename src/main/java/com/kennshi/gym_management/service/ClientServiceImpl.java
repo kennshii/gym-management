@@ -30,7 +30,7 @@ public class ClientServiceImpl implements ClientService {
     public ClientDto getClientById(Long id) {
         return clientRepository.findById(id)
                 .map(clientMapper::toClientDto)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(ResourceNotFoundException::new);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class ClientServiceImpl implements ClientService {
     public ClientDto patchClient(Long id, ClientDto clientDTO) {
 
         Client client = clientRepository.findById(id)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(ResourceNotFoundException::new);
 
         if (clientDTO.getName() != null) {
             client.setName(clientDTO.getName());
