@@ -24,4 +24,10 @@ public class Visit {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
+
+    public Visit(Client client) {
+        this.client = client;
+        date = LocalDate.now();
+        startTime = LocalTime.now();
+    }
 }
