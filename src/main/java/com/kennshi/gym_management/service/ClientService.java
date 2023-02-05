@@ -12,7 +12,7 @@ public interface ClientService {
 
     ClientDto createNewClient(ClientDto clientDTO);
 
-    ClientDto updateClient(ClientDto clientDTO);
+    ClientDto updateClient(Long clientId, ClientDto clientDTO);
 
     ClientDto patchClient(Long id, ClientDto clientDto);
 

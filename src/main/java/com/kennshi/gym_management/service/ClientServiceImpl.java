@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -44,12 +43,20 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientDto updateClient(ClientDto clientDTO) {
-        return Optional.of(clientDTO)
-                .map(clientMapper::toClient)
-                .map(clientRepository::save)
-                .map(clientMapper::toClientDto)
-                .orElseThrow(() -> new IllegalArgumentException("Unable to update client"));
+    public ClientDto updateClient(Long clientId, ClientDto clientDTO) {
+
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(ResourceNotFoundException::new);
+
+        Client clientToUpdate = clientMapper.toClient(clientDTO);
+
+        if(clientToUpdate.getId().equals(client.getId())) {
+            clientRepository.save(clientToUpdate);
+        } else {
+            throw new RuntimeException();
+        }
+
+        return clientMapper.toClientDto(clientToUpdate);
     }
 
     @Override

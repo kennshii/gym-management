@@ -35,10 +35,10 @@ public class ClientController {
         return clientService.createNewClient(clientDto);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{clientId}")
     @ResponseStatus(HttpStatus.OK)
-    public ClientDto updateClient(@RequestBody ClientDto clientDto) {
-        return clientService.createNewClient(clientDto);
+    public ClientDto updateClient(@PathVariable Long clientId,@RequestBody ClientDto clientDto) {
+        return clientService.updateClient(clientId, clientDto);
     }
 
     @PatchMapping("/{id}")
