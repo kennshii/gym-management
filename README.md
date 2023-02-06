@@ -1,2 +1,2 @@
 # gym-management
-RestAPI for a GYM
+Rest-API for managing the client database of a potential gym
