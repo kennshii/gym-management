@@ -12,9 +12,10 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/clients")
+@RequestMapping(ClientController.BASE_URL)
 public class ClientController {
 
+    public static final String BASE_URL = "/api/v1/clients";
     private final ClientService clientService;
 
     @GetMapping

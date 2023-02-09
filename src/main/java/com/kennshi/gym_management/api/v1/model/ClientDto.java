@@ -1,6 +1,6 @@
 package com.kennshi.gym_management.api.v1.model;
 
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -8,7 +8,11 @@ import java.time.LocalDate;
 /**
  * A DTO for the {@link com.kennshi.gym_management.domain.Client} entity
  */
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ClientDto implements Serializable {
     private Long id;
     private String name;
