@@ -13,6 +13,9 @@ import java.time.LocalDate;
 @Builder
 public class MembershipDto implements Serializable {
     private Long id;
+    private Long clientId;
+    private String clientName;
+    private String membershipTypeName;
     private LocalDate startDate;
     private LocalDate endDate;
 }
