@@ -18,7 +18,7 @@ $ mvn spring-boot:run
 3. The API will be available at http://localhost:8080/
 
 ## Entity relationship diagram
-![Entity relationship](/src/main/resources/static/img.png "EntityDiagram")
+![Entity relationship](documentation_src/img/img.png "EntityDiagram")
 
 ## ENDPOINTS
 - ClientFullController
