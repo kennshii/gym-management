@@ -69,6 +69,10 @@ local.properties
 ######################
 /log/
 /target/
+/gym-management-api/target/
+/gym-management-api/log/
+/gym-management-web/target/
+/gym-management-web/log/
 
 ######################
 # Gradle
