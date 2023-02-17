@@ -1,7 +1,0 @@
-com\kennshi\gym_management_rest\api\v1\mapper\VisitMapperTest.class
-com\kennshi\gym_management_rest\api\v1\mapper\MembershipMapperTest.class
-com\kennshi\gym_management_rest\api\v1\mapper\MembershipTypeMapperTest.class
-com\kennshi\gym_management_rest\service\MembershipServiceImplTest.class
-com\kennshi\gym_management_rest\service\ClientServiceImplTest.class
-com\kennshi\gym_management_rest\api\v1\mapper\ClientMapperTest.class
-com\kennshi\gym_management_rest\controller\v1\AbstractRestControllerTest.class

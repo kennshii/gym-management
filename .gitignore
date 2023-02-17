@@ -69,10 +69,12 @@ local.properties
 ######################
 /log/
 /target/
-/gym-management-api/target/
-/gym-management-api/log/
-/gym-management-web/target/
-/gym-management-web/log/
+## target folder at the top level of the project structue and paths and contents underneath it
+target/
+target/*
+## target folder at any level of the project structue
+**/target
+/target
 
 ######################
 # Gradle
