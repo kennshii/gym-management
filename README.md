@@ -13,6 +13,7 @@ $ git clone https://github.com/kennshii/gym-management.git
 2. Compile and run the project using Maven
 ```bash
 $ mvn clean install
+$ cd gym-management-web 
 $ mvn spring-boot:run
 ```
 3. The API will be available at http://localhost:8080/
