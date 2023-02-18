@@ -11,7 +11,6 @@ import com.kennshi.gym_management_rest.repositories.MembershipTypeRepository;
 import com.kennshi.gym_management_rest.repositories.VisitRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -19,7 +18,6 @@ import java.time.LocalDate;
 
 
 @Slf4j
-@EnableJpaRepositories(basePackages = {"com.kennshi.gym_management_rest.repositories"})
 @Component
 public class DataLoader implements CommandLineRunner {
 
