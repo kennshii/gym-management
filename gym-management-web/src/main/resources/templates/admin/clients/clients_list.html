@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        table {
+            border-collapse: collapse;
+            width: 95%;
+            margin: 10px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: black;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        ul {
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+            margin: 4px 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name" id="homeBtn">ADMIN PANEL</div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list">
+        <li>
+            <a href="#" id="clientInfoBtn">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Clients</span>
+            </a>
+            <span class="tooltip">Client info</span>
+        </li>
+        <li>
+            <a href="#" id="membershipDetailsBtn">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Membership Details</span>
+            </a>
+            <span class="tooltip">Membership Details</span>
+        </li>
+        <li>
+            <a href="#" id="visitsBtn">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Visits</span>
+            </a>
+            <span class="tooltip">Visits</span>
+        </li>
+
+        <li class="profile">
+            <div class="profile-details">
+                <!--<img src="profile.jpg" alt="profileImg">-->
+                <div class="name_job">
+                    <div class="name">Eduard B</div>
+                    <div class="job">Developer</div>
+                </div>
+            </div>
+            <i class='bx bx-log-out' id="log_out"></i>
+        </li>
+    </ul>
+</div>
+<section class="home-section" id="home">
+    <h1>Clients management</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Birthday</th>
+            <th>Phone</th>
+            <th>Memberships</th>
+            <th>Visits</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client : ${clients}">
+            <td th:text="${client.id}">1</td>
+            <td>
+                <a th:href="@{/clients/{id}/edit(id=${client.id})}" th:text="${client.name}">Pidaroc Pidarovich</a>
+            </td>
+            <td th:text="${client.email}">sobakamail@mail.com</td>
+            <td th:text="${client.birthday}">2003-01-30</td>
+            <td th:text="${client.phone}">060606060</td>
+            <td>
+                <ul>
+                    <li th:each="membership : ${client.memberships}">
+                        <span th:text="${membership.membershipTypeName}"></span>
+                        <span>(from <span th:text="${membership.startDate}">10-01-2212</span> to <span
+                                th:text="${membership.endDate}"></span>10-01-2212)</span>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li th:each="visit : ${client.visits}">
+                        <span th:text="${visit.date}"></span> at <span th:text="${visit.startTime}">12:55</span>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+
+<script>
+    let homeBtn = document.getElementById('homeBtn');
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("#btn");
+
+    closeBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        menuBtnChange();//calling the function(optional)
+    });
+
+    searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
+        sidebar.classList.toggle("open");
+        menuBtnChange(); //calling the function(optional)
+    });
+
+    // following are the code to change sidebar button(optional)
+    function menuBtnChange() {
+        if (sidebar.classList.contains("open")) {
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+        } else {
+            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
+        }
+    }
+</script>
+</body>
+</html>

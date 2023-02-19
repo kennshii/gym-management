@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/client_info.css}">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name" id="homeBtn">ADMIN PANEL</div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list">
+        <li>
+            <a href="#" id="clientInfoBtn">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Clients</span>
+            </a>
+            <span class="tooltip">Client info</span>
+        </li>
+        <li>
+            <a href="#" id="membershipDetailsBtn">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Membership Details</span>
+            </a>
+            <span class="tooltip">Membership Details</span>
+        </li>
+        <li>
+            <a href="#" id="visitsBtn">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Visits</span>
+            </a>
+            <span class="tooltip">Visits</span>
+        </li>
+
+        <li class="profile">
+            <div class="profile-details">
+                <!--<img src="profile.jpg" alt="profileImg">-->
+                <div class="name_job">
+                    <div class="name">Eduard B</div>
+                    <div class="job">Developer</div>
+                </div>
+            </div>
+            <i class='bx bx-log-out' id="log_out"></i>
+        </li>
+    </ul>
+</div>
+<section class="home-section" id="home">
+    <div class="container">
+        <div>
+            <h2>Client Info</h2>
+            <ul class="withoutBullets">
+                <li><strong>ID:</strong> <span th:text="${client.id}"></span></li>
+                <li><strong>Name:</strong> <span th:text="${client.name}"></span></li>
+                <li><strong>Email:</strong> <span th:text="${client.email}"></span></li>
+                <li><strong>Birthday:</strong> <span th:text="${client.birthday}"></span></li>
+                <li><strong>Phone:</strong> <span th:text="${client.phone}"></span></li>
+            </ul>
+            <br>
+            <a th:href="@{/clients/{id}/edit(id=${client.id})}" class="edit-button">Edit</a>
+            <a th:href="@{/clients/{id}/delete(id=${client.id})}" class="delete-button">Delete</a>
+            <br>
+        </div>
+        <div>
+            <h2>Membership Info</h2>
+            <ul>
+                <li th:each="membership : ${client.memberships}" class="withoutBullets">
+                    <span><strong>Membership type:</strong> <span th:text="${membership.membershipTypeName}"></span></span><br>
+                    <span><strong>Start Date:</strong> <span th:text="${membership.startDate}"></span></span><br>
+                    <span><strong>End Date:</strong> <span th:text="${membership.endDate}"></span></span>
+                </li>
+            </ul>
+            <a th:href="@{/clients/{id}/edit(id=${client.id})}" class="edit-button">Edit</a>
+            <a th:href="@{/clients/{id}/delete(id=${client.id})}" class="delete-button">Delete</a>
+        </div>
+        <div>
+            <h2>Client Visits</h2>
+            <ul>
+                <li th:each="visit : ${client.visits}" class="withoutBullets">
+                    <span><strong>Visit Date:</strong> <span th:utext="${visit.date}"></span></span><br>
+                    <span><strong>Visit Start Time:</strong> <span th:utext="${visit.startTime}"></span></span>
+                </li>
+            </ul>
+            <a th:href="@{/clients/{id}/edit(id=${client.id})}" class="edit-button">Edit</a>
+            <a th:href="@{/clients/{id}/delete(id=${client.id})}" class="delete-button">Delete</a>
+        </div>
+    </div>
+</section>
+<script>
+    let homeBtn = document.getElementById('homeBtn');
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("#btn");
+    //   let searchBtn = document.querySelector(".bx-search");
+
+    closeBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        menuBtnChange();//calling the function(optional)
+    });
+
+    searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
+        sidebar.classList.toggle("open");
+        menuBtnChange(); //calling the function(optional)
+    });
+
+    // following are the code to change sidebar button(optional)
+    function menuBtnChange() {
+        if (sidebar.classList.contains("open")) {
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+        } else {
+            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
+        }
+    }
+</script>
+</body>
+</html>
