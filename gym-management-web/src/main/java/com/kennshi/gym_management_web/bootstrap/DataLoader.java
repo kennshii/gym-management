@@ -73,10 +73,10 @@ public class DataLoader implements CommandLineRunner {
         clientRepository.save(client1);
 
         Client client2 = new Client();
-        client2.setName("Nicoleta Catruc");
+        client2.setName("Pohui pohui");
         client2.setEmail("pentrutiemail@gmail.com");
         client2.setBirthday(LocalDate.of(2001, 2, 11));
-        client2.setPhone("067669101");
+        client2.setPhone("068056913");
         clientRepository.save(client2);
 
         //loading memberships

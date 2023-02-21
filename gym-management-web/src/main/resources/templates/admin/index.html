@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/../static/css/style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<!-- sidebar -->
+<div class="sidebar">
+    <div class="logo-details">
+        <a th:href="@{/menu}">
+            <i class='bx bx-dumbbell' id="main_icon"></i>
+        </a>
+        <div class="logo_name" id="homeBtn">ADMIN PANEL</div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list">
+        <li>
+            <a th:href="@{/menu}" href="#">
+                <i class='bx bxs-dashboard'></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+            <span class="tooltip">Gym statistics</span>
+        </li>
+        <li>
+            <a th:href="@{/menu/clients}" href="#" id="clientInfoBtn">
+                <i class='bx bxs-group'></i>
+                <span class="links_name">Clients</span>
+            </a>
+            <span class="tooltip">Client administration</span>
+        </li>
+        <li>
+            <a th:href="@{/menu/memberships}" href="#" id="membershipDetailsBtn">
+                <i class='bx bx-credit-card'></i>
+                <span class="links_name">Memberships</span>
+            </a>
+            <span class="tooltip">Membership configuration</span>
+        </li>
+<!--        <li>-->
+<!--            <a th:href="@{/menu/visits}" href="#" id="visitsBtn">-->
+<!--                <i class='bx bx-grid-alt'></i>-->
+<!--                <span class="links_name">Visits</span>-->
+<!--            </a>-->
+<!--            <span class="tooltip"></span>-->
+<!--        </li>-->
+
+        <li class="profile">
+            <div class="profile-details">
+                <!--<img src="profile.jpg" alt="profileImg">-->
+                <div class="name_job">
+                    <div class="name">Eduard B</div>
+                    <div class="job">Developer</div>
+                </div>
+            </div>
+            <i class='bx bx-log-out' id="log_out"></i>
+        </li>
+    </ul>
+</div>
+<!-- sidebar -->
+<section class="home-section" id="home">
+    <div class="text">Dashboard</div>
+</section>
+<script th:src="@{/js/layout_config.js}" src="/../static/js/layout_config.js"></script>
+</body>
+</html>
