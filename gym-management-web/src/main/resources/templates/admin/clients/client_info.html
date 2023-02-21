@@ -23,27 +23,26 @@
     </div>
     <ul class="nav-list">
         <li>
+            <a th:href="@{/menu}" href="#">
+                <i class='bx bxs-dashboard'></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+            <span class="tooltip">Gym statistics</span>
+        </li>
+        <li>
             <a th:href="@{/menu/clients}" href="#" id="clientInfoBtn">
-                <i class='bx bx-grid-alt'></i>
+                <i class='bx bxs-group'></i>
                 <span class="links_name">Clients</span>
             </a>
             <span class="tooltip">Client administration</span>
         </li>
         <li>
             <a th:href="@{/menu/memberships}" href="#" id="membershipDetailsBtn">
-                <i class='bx bx-grid-alt'></i>
+                <i class='bx bx-credit-card'></i>
                 <span class="links_name">Memberships</span>
             </a>
             <span class="tooltip">Membership configuration</span>
         </li>
-        <li>
-            <a th:href="@{/menu/visits}" href="#" id="visitsBtn">
-                <i class='bx bx-grid-alt'></i>
-                <span class="links_name">Visits</span>
-            </a>
-            <span class="tooltip"></span>
-        </li>
-
         <li class="profile">
             <div class="profile-details">
                 <!--<img src="profile.jpg" alt="profileImg">-->
