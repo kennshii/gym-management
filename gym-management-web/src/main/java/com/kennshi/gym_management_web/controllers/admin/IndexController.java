@@ -1,4 +1,4 @@
-package com.kennshi.gym_management_web.controllers;
+package com.kennshi.gym_management_web.controllers.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

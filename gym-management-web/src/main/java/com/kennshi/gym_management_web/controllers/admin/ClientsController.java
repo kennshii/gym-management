@@ -1,13 +1,12 @@
-package com.kennshi.gym_management_web.controllers;
+package com.kennshi.gym_management_web.controllers.admin;
 
+import com.kennshi.gym_management_rest.api.v1.model.ClientDto;
 import com.kennshi.gym_management_rest.api.v1.model.ClientFullDto;
 import com.kennshi.gym_management_rest.controller.v1.ClientFullController;
 import com.kennshi.gym_management_rest.service.ClientService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,14 +31,30 @@ public class ClientsController {
         return "admin/clients/clients_list";
     }
 
-    @GetMapping("/clients/{id}/edit")
-    public String editClient(@PathVariable Long id, Model model) {
+    @GetMapping("/clients/{id}")
+    public String getInfo(@PathVariable Long id, Model model) {
 
         ClientFullDto clientDto = clientFullController.getClientById(id);
 
         model.addAttribute("client", clientDto);
 
         return "admin/clients/client_info";
+    }
+
+    @GetMapping("/clients/{id}/edit")
+    public String editClient(@PathVariable Long id, Model model) {
+
+        model.addAttribute("client", clientService.getClientById(id));
+
+        return "/admin/clients/client_edit";
+    }
+
+    @PostMapping("/clients/{id}/save")
+    public String saveOrUpdate(@ModelAttribute ClientDto toSave, @PathVariable Long id, Model model) {
+
+        clientService.updateClient(id, toSave);
+
+        return "redirect:/clients/{id}";
     }
 
     @GetMapping("/clients/{id}/delete")
