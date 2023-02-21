@@ -22,11 +22,6 @@ public class ClientsController {
         this.clientService = clientService;
     }
 
-    @RequestMapping("/menu")
-    public String getDashboard() {
-        return "admin/index";
-    }
-
     @RequestMapping("/menu/clients")
     public String getAllClients(Model model) {
 
