@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -43,32 +42,36 @@
     </style>
 </head>
 <body>
+<!-- sidebar -->
 <div class="sidebar">
     <div class="logo-details">
+        <a th:href="@{/menu}">
+            <i class='bx bx-dumbbell' id="main_icon"></i>
+        </a>
         <div class="logo_name" id="homeBtn">ADMIN PANEL</div>
         <i class='bx bx-menu' id="btn"></i>
     </div>
     <ul class="nav-list">
         <li>
-            <a href="#" id="clientInfoBtn">
+            <a th:href="@{/menu/clients}" href="#" id="clientInfoBtn">
                 <i class='bx bx-grid-alt'></i>
                 <span class="links_name">Clients</span>
             </a>
-            <span class="tooltip">Client info</span>
+            <span class="tooltip">Client administration</span>
         </li>
         <li>
-            <a href="#" id="membershipDetailsBtn">
+            <a th:href="@{/menu/memberships}" href="#" id="membershipDetailsBtn">
                 <i class='bx bx-grid-alt'></i>
-                <span class="links_name">Membership Details</span>
+                <span class="links_name">Memberships</span>
             </a>
-            <span class="tooltip">Membership Details</span>
+            <span class="tooltip">Membership configuration</span>
         </li>
         <li>
-            <a href="#" id="visitsBtn">
+            <a th:href="@{/menu/visits}" href="#" id="visitsBtn">
                 <i class='bx bx-grid-alt'></i>
                 <span class="links_name">Visits</span>
             </a>
-            <span class="tooltip">Visits</span>
+            <span class="tooltip"></span>
         </li>
 
         <li class="profile">
@@ -83,6 +86,7 @@
         </li>
     </ul>
 </div>
+<!-- sidebar -->
 <section class="home-section" id="home">
     <h1>Clients management</h1>
     <table>
@@ -127,30 +131,6 @@
     </table>
 </section>
 
-
-<script>
-    let homeBtn = document.getElementById('homeBtn');
-    let sidebar = document.querySelector(".sidebar");
-    let closeBtn = document.querySelector("#btn");
-
-    closeBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
-        menuBtnChange();//calling the function(optional)
-    });
-
-    searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
-        sidebar.classList.toggle("open");
-        menuBtnChange(); //calling the function(optional)
-    });
-
-    // following are the code to change sidebar button(optional)
-    function menuBtnChange() {
-        if (sidebar.classList.contains("open")) {
-            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-        } else {
-            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
-        }
-    }
-</script>
+<script th:src="@{/js/layout_config.js}" src="/../static/js/layout_config.js"></script>
 </body>
 </html>
