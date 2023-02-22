@@ -81,12 +81,16 @@ public class DataLoader implements CommandLineRunner {
 
         //loading memberships
         Membership edwardsMembership = new Membership(client1, yearMembership);
+        Membership edwardsMembership1 = new Membership(client1, month12Visits);
         membershipRepository.save(edwardsMembership);
+        membershipRepository.save(edwardsMembership1);
 
         Membership nicoletasMembership = new Membership(client2, month12Visits);
         membershipRepository.save(nicoletasMembership);
+
         //assigning memberships to clients
         client1.getMemberships().add(edwardsMembership);
+        client1.getMemberships().add(edwardsMembership1);
         clientRepository.save(client1);
 
         client2.getMemberships().add(nicoletasMembership);
