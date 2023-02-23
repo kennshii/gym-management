@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/client_info.css}" href="/../static/css/client_info.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
 <!-- sidebar -->
 <div class="sidebar">
     <div class="logo-details">
@@ -53,25 +56,32 @@
     </ul>
 </div>
 <!-- sidebar -->
+
+<!-- Content section -->
 <section class="home-section" id="home">
-    <h1>Edit Data</h1>
-    <form th:action="@{/clients/{id}/save(id=${client.id})}" th:object="${client}" method="post">
-        <input type="hidden" th:field="*{id}">
-        <label for="name">Name:</label>
-        <input type="text" th:field="*{name}" id="name">
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" th:field="*{email}" id="email">
-        <br>
-        <label for="birthday">Birthday:</label>
-        <input type="text" th:field="*{birthday}" id="birthday">
-        <br>
-        <label for="phone">Phone:</label>
-        <input type="text" th:field="*{phone}" id="phone">
-        <br>
-        <button type="submit">Save</button>
-    </form>
+    <div class="container">
+        <div th:each="membership : ${clients.memberships}">
+            <h2>Membership Info</h2>
+            <ul>
+                <li class="withoutBullets">
+                    <span><strong>ID:</strong> <span th:text="${membership.id}"></span></span><br>
+                    <span><strong>Membership type:</strong> <span th:text="${membership.membershipTypeName}"></span></span><br>
+                    <span><strong>Start Date:</strong> <span th:text="${membership.startDate}"></span></span><br>
+                    <span><strong>End Date:</strong> <span th:text="${membership.endDate}"></span></span>
+                </li>
+            </ul>
+            <br>
+            <a th:href="@{memberships/{membershipId}/edit(clientId=${clients.id}, membershipId=${membership.id})}" class="edit-button">Edit</a>
+            <a th:href="@{memberships/{membershipId}/delete(clientId=${clients.id}, membershipId=${membership.id})}" class="edit-button">Delete</a>
+            <!--            <a th:href="@{/clients/{id}/edit(id=${client.id})}" class="edit-button">Manage</a>-->
+            <br><br><br><br>
+        </div>
+    </div>
 </section>
+<!-- Content section -->
+
+<!-- JS -->
 <script th:src="@{/js/layout_config.js}" src="/../static/js/layout_config.js"></script>
+
 </body>
 </html>
