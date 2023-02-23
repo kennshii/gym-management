@@ -25,6 +25,7 @@ public class MembershipServiceImpl implements MembershipService {
     private final MembershipRepository membershipRepository;
     private final ClientMapper clientMapper;
     private final MembershipMapper membershipMapper;
+    private final MembershipTypeService membershipTypeService;
 
     @Override
     public List<MembershipDto> getAllMemberships() {
@@ -62,6 +63,7 @@ public class MembershipServiceImpl implements MembershipService {
                 .orElseThrow(() -> new EntityNotFoundException("Membership not found with id " + membershipId));
 
         Membership membershipToUpdate = membershipMapper.toMembership(membershipDto);
+        membershipToUpdate.setMembershipType(membershipTypeService.findByName(membershipDto.getMembershipTypeName()));
 
         //checking if if from dto equals with id from repo for further update
         if (membershipToUpdate.getId().equals(membership.getId())) {

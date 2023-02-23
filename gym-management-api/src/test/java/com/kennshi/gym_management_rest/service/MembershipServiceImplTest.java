@@ -21,13 +21,17 @@ class MembershipServiceImplTest {
 
     MembershipMapper membershipMapper = MembershipMapper.INSTANCE;
 
+    @Mock
     MembershipService membershipService;
+
+    @Mock
+    MembershipTypeService membershipTypeService;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        membershipService = new MembershipServiceImpl(clientRepository, membershipRepository, clientMapper, membershipMapper);
+        membershipService = new MembershipServiceImpl(clientRepository, membershipRepository, clientMapper, membershipMapper, membershipTypeService);
     }
 
     @Test
