@@ -56,4 +56,12 @@ public class FrontMembershipController {
         return "redirect:/clients/{clientId}/memberships";
     }
 
+    @GetMapping("{clientId}/memberships/{membershipId}/delete")
+    public String deleteMembership(@PathVariable Long clientId, @PathVariable Long membershipId) {
+
+        membershipService.deleteById(membershipId);
+
+        return "redirect:/clients/{clientId}/memberships";
+    }
+
 }
