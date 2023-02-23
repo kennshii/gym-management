@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
@@ -33,35 +32,18 @@ public class DataLoader implements CommandLineRunner {
         this.membershipTypeRepository = membershipTypeRepository;
     }
 
+    //MEMBERSHIP TYPES
+    static final MembershipType yearMembership = new MembershipType("12 MONTHS");
+    static final MembershipType threeMonths = new MembershipType("3 MONTHS");
+    static final MembershipType oneMonth = new MembershipType("1 MONTH");
+    static final MembershipType month12Visits = new MembershipType("12 VISITS");
+
     @Override
     public void run(String... args) throws Exception {
         //Adding membership types
-        MembershipType yearMembership = MembershipType.builder()
-                .name("12 MONTHS")
-                .price(BigDecimal.valueOf(2999L))
-                .maxVisits(-1)
-                .build();
         membershipTypeRepository.save(yearMembership);
-
-        MembershipType threeMonths = MembershipType.builder()
-                .name("3 MONTHS")
-                .price(BigDecimal.valueOf(999L))
-                .maxVisits(-1)
-                .build();
         membershipTypeRepository.save(threeMonths);
-
-        MembershipType oneMonth = MembershipType.builder()
-                .name("1 MONTH")
-                .price(BigDecimal.valueOf(450L))
-                .maxVisits(-1)
-                .build();
         membershipTypeRepository.save(oneMonth);
-
-        MembershipType month12Visits = MembershipType.builder()
-                .name("12 VISITS")
-                .price(BigDecimal.valueOf(450L))
-                .maxVisits(12)
-                .build();
         membershipTypeRepository.save(month12Visits);
 
         //loading clients
