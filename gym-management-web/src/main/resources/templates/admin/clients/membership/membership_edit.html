@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/client_edit.css}" href="/../static/css/client_edit.css">
+
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 <!-- sidebar -->
@@ -55,17 +58,17 @@
 <!-- sidebar -->
 
 <section class="home-section" id="home">
-    <div class="container">
-        <h2>Edit Membership Info</h2>
-        <form th:object="${membership}" th:action="@{/clients/{clientId}/memberships/{membershipId}/save(clientId=${client.id}, membershipId=${membership.id})}" method="post">
-            <input type="hidden" th:field="*{id}"/>
-            <div class="form-group">
-                <label for="clientName">Client Name:</label>
-                <input type="text" class="form-control" id="clientName" th:field="*{clientName}"/>
+    <div class="membership-info">
+        <h2 class="membership-info__title">Edit Membership Info</h2>
+        <form th:object="${membership}" th:action="@{/clients/{clientId}/memberships/{membershipId}/save(clientId=${client.id}, membershipId=${membership.id})}" method="post" class="membership-info__form">
+            <input type="hidden" th:field="*{id}" />
+            <div class="membership-info__field">
+                <label for="clientName" class="membership-info__label">Client Name:</label>
+                <input type="text" id="clientName" th:field="*{clientName}" class="membership-info__input" />
             </div>
-            <div class="form-group">
-                <label for="membershipType">Membership Type:</label>
-                <select name="membershipTypeName" class="form-control" id="membershipType" th:field="*{membershipTypeName}">
+            <div class="membership-info__field">
+                <label for="membershipType" class="membership-info__label">Membership Type:</label>
+                <select name="membershipTypeName" id="membershipType" th:field="*{membershipTypeName}" class="membership-info__select">
                     <option value="12 MONTHS" th:value="${'12 MONTHS'}">12 MONTHS</option>
                     <option value="3 MONTHS" th:value="${'3 MONTHS'}">3 MONTHS</option>
                     <option value="1 MONTH" th:value="${'1 MONTH'}">1 MONTH</option>
@@ -73,15 +76,15 @@
                     <!-- add more options here -->
                 </select>
             </div>
-            <div class="form-group">
-                <label for="startDate">Start Date:</label>
-                <input type="text" class="form-control" id="startDate" th:field="*{startDate}"/>
+            <div class="membership-info__field">
+                <label for="startDate" class="membership-info__label">Start Date:</label>
+                <input type="text" id="startDate" th:field="*{startDate}" class="membership-info__input" />
             </div>
-            <div class="form-group">
-                <label for="endDate">End Date:</label>
-                <input type="text" class="form-control" id="endDate" th:field="*{endDate}"/>
+            <div class="membership-info__field">
+                <label for="endDate" class="membership-info__label">End Date:</label>
+                <input type="text" id="endDate" th:field="*{endDate}" class="membership-info__input" />
             </div>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="membership-info__button">Save</button>
         </form>
     </div>
 </section>

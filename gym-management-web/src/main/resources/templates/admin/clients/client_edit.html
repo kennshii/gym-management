@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/client_edit.css}" href="/../static/css/client_edit.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,23 +55,30 @@
 </div>
 <!-- sidebar -->
 <section class="home-section" id="home">
+    <div class="membership-info">
     <h1>Edit Data</h1>
-    <form th:action="@{/clients/{id}/save(id=${client.id})}" th:object="${client}" method="post">
+    <form th:action="@{/clients/{id}/save(id=${client.id})}" th:object="${client}" method="post" class="membership-info__form">
         <input type="hidden" th:field="*{id}">
-        <label for="name">Name:</label>
-        <input type="text" th:field="*{name}" id="name">
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" th:field="*{email}" id="email">
-        <br>
-        <label for="birthday">Birthday:</label>
-        <input type="text" th:field="*{birthday}" id="birthday">
-        <br>
-        <label for="phone">Phone:</label>
-        <input type="text" th:field="*{phone}" id="phone">
-        <br>
-        <button type="submit">Save</button>
+        <div class="membership-info__field">
+            <label for="name" class="membership-info__label">Name:</label>
+            <input type="text" th:field="*{name}" id="name" class="membership-info__input">
+        </div>
+        <div class="membership-info__field">
+            <label for="email" class="membership-info__label">Email:</label>
+            <input type="email" th:field="*{email}" id="email" class="membership-info__input">
+        </div>
+        <div class="membership-info__field">
+            <label for="birthday" class="membership-info__label">Birthday:</label>
+            <input type="text" th:field="*{birthday}" id="birthday" class="membership-info__input">
+        </div>
+        <div class="membership-info__field">
+            <label for="phone" class="membership-info__label">Phone:</label>
+            <input type="text" th:field="*{phone}" id="phone" class="membership-info__input">
+        </div>
+        <button type="submit" class="membership-info__button">Save</button>
     </form>
+    </div>
+
 </section>
 <script th:src="@{/js/layout_config.js}" src="/../static/js/layout_config.js"></script>
 </body>
