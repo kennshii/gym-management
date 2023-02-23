@@ -25,5 +25,27 @@ public class MembershipType {
     @OneToMany(mappedBy = "membershipType", cascade = CascadeType.ALL)
     private Set<Membership> memberships = new HashSet<>();
 
-    // getters and setters
+    public MembershipType(String name) {
+        this.name = name;
+
+        if(name.equals("12 MONTHS")) {
+            setPrice(BigDecimal.valueOf(2999L));
+            setMaxVisits(-1);
+        }
+
+        if(name.equals("3 MONTHS")) {
+            setPrice(BigDecimal.valueOf(999L));
+            setMaxVisits(-1);
+        }
+
+        if(name.equals("1 MONTH")) {
+            setPrice(BigDecimal.valueOf(450L));
+            setMaxVisits(-1);
+        }
+
+        if(name.equals("12 VISITS")) {
+            setPrice(BigDecimal.valueOf(350L));
+            setMaxVisits(12);
+        }
+    }
 }

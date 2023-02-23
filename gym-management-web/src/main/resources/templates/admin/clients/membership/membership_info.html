@@ -60,46 +60,21 @@
 <!-- Content section -->
 <section class="home-section" id="home">
     <div class="container">
-        <div>
-            <h2>Client Info</h2>
-            <ul class="withoutBullets">
-                <li><strong>ID:</strong> <span th:text="${client.id}"></span></li>
-                <li><strong>Name:</strong> <span th:text="${client.name}"></span></li>
-                <li><strong>Email:</strong> <span th:text="${client.email}"></span></li>
-                <li><strong>Birthday:</strong> <span th:text="${client.birthday}"></span></li>
-                <li><strong>Phone:</strong> <span th:text="${client.phone}"></span></li>
-            </ul>
-            <br>
-            <a th:href="@{/clients/{id}/edit(id=${client.id})}" class="edit-button">Edit</a>
-            <a th:href="@{/clients/{id}/delete(id=${client.id})}" class="delete-button">Delete</a>
-            <br>
-        </div>
-        <div>
+        <div th:each="membership : ${clients.memberships}">
             <h2>Membership Info</h2>
             <ul>
-                <li th:each="membership : ${client.memberships}" class="withoutBullets">
+                <li class="withoutBullets">
+                    <span><strong>ID:</strong> <span th:text="${membership.id}"></span></span><br>
                     <span><strong>Membership type:</strong> <span th:text="${membership.membershipTypeName}"></span></span><br>
                     <span><strong>Start Date:</strong> <span th:text="${membership.startDate}"></span></span><br>
                     <span><strong>End Date:</strong> <span th:text="${membership.endDate}"></span></span>
                 </li>
             </ul>
             <br>
-            <a th:href="@{/clients/{id}/memberships(id=${client.id})}" class="edit-button">Manage</a>
+            <a th:href="@{memberships/{membershipId}/edit(clientId=${clients.id}, membershipId=${membership.id})}" class="edit-button">Edit</a>
+            <a th:href="@{memberships/{membershipId}/delete(clientId=${clients.id}, membershipId=${membership.id})}" class="edit-button">Delete</a>
             <!--            <a th:href="@{/clients/{id}/edit(id=${client.id})}" class="edit-button">Manage</a>-->
-
             <br><br><br><br>
-        </div>
-        <div>
-            <h2>Visits</h2>
-            <ul>
-                <li th:each="visit : ${client.visits}" class="withoutBullets">
-                    <span><strong>Visit Date:</strong> <span th:utext="${visit.date}"></span></span><br>
-                    <span><strong>Visit Start Time:</strong> <span th:utext="${visit.startTime}"></span></span>
-                </li>
-            </ul>
-            <br>
-            <a th:href="@{/clients/{id}/visits}" class="edit-button">Manage</a>
-            <br>
         </div>
     </div>
 </section>

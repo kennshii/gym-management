@@ -11,15 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-public class ClientsController {
+public class FrontClientsController {
 
     private final ClientFullController clientFullController;
     private final ClientService clientService;
 
-    public ClientsController(ClientFullController clientFullController, ClientService clientService) {
+    public FrontClientsController(ClientFullController clientFullController, ClientService clientService) {
         this.clientFullController = clientFullController;
         this.clientService = clientService;
     }
+
 
     @RequestMapping("/menu/clients")
     public String getAllClients(Model model) {

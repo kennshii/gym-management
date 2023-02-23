@@ -5,9 +5,11 @@
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/../static/css/style.css">
     <link rel="stylesheet" th:href="@{/css/client_edit.css}" href="/../static/css/client_edit.css">
+
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 <!-- sidebar -->
@@ -54,32 +56,39 @@
     </ul>
 </div>
 <!-- sidebar -->
+
 <section class="home-section" id="home">
     <div class="membership-info">
-    <h1>Edit Data</h1>
-    <form th:action="@{/clients/{id}/save(id=${client.id})}" th:object="${client}" method="post" class="membership-info__form">
-        <input type="hidden" th:field="*{id}">
-        <div class="membership-info__field">
-            <label for="name" class="membership-info__label">Name:</label>
-            <input type="text" th:field="*{name}" id="name" class="membership-info__input">
-        </div>
-        <div class="membership-info__field">
-            <label for="email" class="membership-info__label">Email:</label>
-            <input type="email" th:field="*{email}" id="email" class="membership-info__input">
-        </div>
-        <div class="membership-info__field">
-            <label for="birthday" class="membership-info__label">Birthday:</label>
-            <input type="text" th:field="*{birthday}" id="birthday" class="membership-info__input">
-        </div>
-        <div class="membership-info__field">
-            <label for="phone" class="membership-info__label">Phone:</label>
-            <input type="text" th:field="*{phone}" id="phone" class="membership-info__input">
-        </div>
-        <button type="submit" class="membership-info__button">Save</button>
-    </form>
+        <h2 class="membership-info__title">Edit Membership Info</h2>
+        <form th:object="${membership}" th:action="@{/clients/{clientId}/memberships/{membershipId}/save(clientId=${client.id}, membershipId=${membership.id})}" method="post" class="membership-info__form">
+            <input type="hidden" th:field="*{id}" />
+            <div class="membership-info__field">
+                <label for="clientName" class="membership-info__label">Client Name:</label>
+                <input type="text" id="clientName" th:field="*{clientName}" class="membership-info__input" />
+            </div>
+            <div class="membership-info__field">
+                <label for="membershipType" class="membership-info__label">Membership Type:</label>
+                <select name="membershipTypeName" id="membershipType" th:field="*{membershipTypeName}" class="membership-info__select">
+                    <option value="12 MONTHS" th:value="${'12 MONTHS'}">12 MONTHS</option>
+                    <option value="3 MONTHS" th:value="${'3 MONTHS'}">3 MONTHS</option>
+                    <option value="1 MONTH" th:value="${'1 MONTH'}">1 MONTH</option>
+                    <option value="12 VISITS" th:value="${'12 VISITS'}">12 VISITS</option>
+                    <!-- add more options here -->
+                </select>
+            </div>
+            <div class="membership-info__field">
+                <label for="startDate" class="membership-info__label">Start Date:</label>
+                <input type="text" id="startDate" th:field="*{startDate}" class="membership-info__input" />
+            </div>
+            <div class="membership-info__field">
+                <label for="endDate" class="membership-info__label">End Date:</label>
+                <input type="text" id="endDate" th:field="*{endDate}" class="membership-info__input" />
+            </div>
+            <button type="submit" class="membership-info__button">Save</button>
+        </form>
     </div>
-
 </section>
+
 <script th:src="@{/js/layout_config.js}" src="/../static/js/layout_config.js"></script>
 </body>
 </html>
