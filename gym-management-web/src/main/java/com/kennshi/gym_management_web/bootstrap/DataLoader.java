@@ -80,8 +80,12 @@ public class DataLoader implements CommandLineRunner {
 
         //loading visits
         Visit visit1 = new Visit(client1);
+        Visit visit2 = new Visit(client1);
         visitRepository.save(visit1);
+        visitRepository.save(visit2);
+
         client1.getVisits().add(visit1);
+        client1.getVisits().add(visit2);
         clientRepository.save(client1);
 
         //logging data loader

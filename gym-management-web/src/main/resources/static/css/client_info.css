@@ -21,6 +21,27 @@
     margin-right: 10px;
 }
 
+.visit-edit-button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 20px;
+}
+
+.visit-delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
 .delete-button {
     background-color: #f44336;
     color: white;
