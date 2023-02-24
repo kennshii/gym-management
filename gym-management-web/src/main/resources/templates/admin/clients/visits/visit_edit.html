@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/visit_edit.css}" href="/../static/css/visit_edit.css">
+
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +56,24 @@
 </div>
 <!-- sidebar -->
 <section class="home-section" id="home">
-    <div class="text">Dashboard</div>
+    <div class="form-container">
+        <h2 class="form-title">Edit Visit Info</h2>
+        <form th:object="${visit}" th:action="@{/clients/{clientId}/visits/{visitId}/save(clientId=${client.id}, visitId=${visit.id})}" method="post" class="form">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="form-group">
+                <label for="date" class="form-label">Date:</label>
+                <input type="date" id="date" th:field="*{date}" class="form-input"/>
+                <label>Prev date: <span th:text="*{date}">date</span></label>
+            </div>
+            <div class="form-group">
+                <label for="startTime" class="form-label">Start Time:</label>
+                <input type="time" id="startTime" th:field="*{startTime}" class="form-input"/>
+                <label>Prev date: <span th:text="*{startTime}">time</span> </label>
+            </div>
+            <button type="submit" class="form-button">Save</button>
+        </form>
+    </div>
+
 </section>
 <script th:src="@{/js/layout_config.js}" src="/../static/js/layout_config.js">
 </script>
