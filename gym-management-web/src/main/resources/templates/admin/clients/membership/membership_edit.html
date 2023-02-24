@@ -78,11 +78,13 @@
             </div>
             <div class="membership-info__field">
                 <label for="startDate" class="membership-info__label">Start Date:</label>
-                <input type="text" id="startDate" th:field="*{startDate}" class="membership-info__input" />
+                <input type="date" id="startDate" th:field="*{startDate}" class="membership-info__input" />
+                <label>Actual Start Date: <span th:text="*{startDate}">start date..</span></label>
             </div>
             <div class="membership-info__field">
                 <label for="endDate" class="membership-info__label">End Date:</label>
-                <input type="text" id="endDate" th:field="*{endDate}" class="membership-info__input" />
+                <input type="date" id="endDate" th:field="*{endDate}" class="membership-info__input" />
+                <label>Actual End Date: <span th:text="*{endDate}">start date..</span></label>
             </div>
             <button type="submit" class="membership-info__button">Save</button>
         </form>
@@ -90,5 +92,6 @@
 </section>
 
 <script th:src="@{/js/layout_config.js}" src="/../static/js/layout_config.js"></script>
+
 </body>
 </html>

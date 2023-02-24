@@ -69,7 +69,8 @@
         </div>
         <div class="membership-info__field">
             <label for="birthday" class="membership-info__label">Birthday:</label>
-            <input type="text" th:field="*{birthday}" id="birthday" class="membership-info__input">
+            <input type="date" th:field="*{birthday}" id="birthday" class="membership-info__input">
+            <label>Actual birthday: <span th:text="*{birthday}">Birthday</span></label>
         </div>
         <div class="membership-info__field">
             <label for="phone" class="membership-info__label">Phone:</label>
