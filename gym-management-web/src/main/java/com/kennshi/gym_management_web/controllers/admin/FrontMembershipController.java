@@ -34,6 +34,26 @@ public class FrontMembershipController {
         return "/admin/clients/membership/membership_info";
     }
 
+    @GetMapping("/{clientId}/memberships/new")
+    public String addMembershipPage(@ModelAttribute MembershipDto membershipDto,
+                                    @PathVariable Long clientId,
+                                    Model model) {
+
+        model.addAttribute("client", clientService.getClientById(clientId));
+        model.addAttribute("membership", membershipDto);
+
+        return "/admin/clients/membership/membership_add";
+    }
+
+    @PostMapping("/{clientId}/memberships/new/save")
+    public String assignMembership(@ModelAttribute MembershipDto membershipDto,
+                                   @PathVariable Long clientId) {
+
+        membershipService.createNewMembership(clientId, membershipDto);
+
+        return "redirect:/clients/{clientId}/memberships";
+    }
+
     @GetMapping("{clientId}/memberships/{membershipId}/edit")
     public String editMembership(@PathVariable Long clientId,
                                  @PathVariable Long membershipId,

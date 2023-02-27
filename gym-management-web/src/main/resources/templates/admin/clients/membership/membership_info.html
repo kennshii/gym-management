@@ -59,6 +59,8 @@
 
 <!-- Content section -->
 <section class="home-section" id="home">
+    <h1 class="text">Memberships</h1>
+    <a th:href="@{/clients/{clientId}/memberships/new(clientId=${clients.id})}" class="edit-button">Add membership</a>
     <div class="container">
         <div th:each="membership : ${clients.memberships}">
             <h2>Membership Info</h2>
