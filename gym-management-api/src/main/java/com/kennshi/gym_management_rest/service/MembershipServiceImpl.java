@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,7 +47,27 @@ public class MembershipServiceImpl implements MembershipService {
     @Override
     public MembershipDto createNewMembership(Long clientId,MembershipDto membershipDto) {
 
+        //setting membership
         Membership membership = membershipMapper.toMembership(membershipDto);
+        membership.setMembershipType(membershipTypeService.findByName(membershipDto.getMembershipTypeName()));
+
+        if(membership.getMembershipType().getName().equals("12 MONTHS")) {
+            membership.setStartDate(LocalDate.now());
+            membership.setEndDate(LocalDate.now().plusMonths(12));
+        }
+        if(membership.getMembershipType().getName().equals("3 MONTHS")) {
+            membership.setStartDate(LocalDate.now());
+            membership.setEndDate(LocalDate.now().plusMonths(3));
+        }
+        if(membership.getMembershipType().getName().equals("1 MONTH")) {
+            membership.setStartDate(LocalDate.now());
+            membership.setEndDate(LocalDate.now().plusMonths(1));
+        }
+        if(membership.getMembershipType().getName().equals("12 VISITS")) {
+            membership.setStartDate(LocalDate.now());
+            membership.setEndDate(LocalDate.now().plusMonths(1));
+        }
+
         //saving membership
         membershipRepository.save(membership);
         //add membership to client id
