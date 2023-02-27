@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/client_info.css}" href="/../static/css/client_info.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +88,8 @@
 </div>
 <!-- sidebar -->
 <section class="home-section" id="home">
-    <h1>Clients management</h1>
+    <h1 class="text">Clients management</h1>
+    <a th:href="@{/clients/new}" class="edit-button">Add</a>
     <table>
         <thead>
         <tr>

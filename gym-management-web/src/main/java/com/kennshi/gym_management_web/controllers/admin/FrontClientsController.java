@@ -32,6 +32,22 @@ public class FrontClientsController {
         return "admin/clients/clients_list";
     }
 
+    @GetMapping("/clients/new")
+    public String newClientPage(@ModelAttribute ClientDto clientDto, Model model) {
+
+        model.addAttribute("client", clientDto);
+
+        return "admin/clients/client_create";
+    }
+
+    @PostMapping("/clients/new/save")
+    public String createClient(@ModelAttribute ClientDto clientDto) {
+
+        clientService.createNewClient(clientDto);
+
+        return "redirect:/menu/clients";
+    }
+
     @GetMapping("/clients/{id}")
     public String getInfo(@PathVariable Long id, Model model) {
 
@@ -51,7 +67,7 @@ public class FrontClientsController {
     }
 
     @PostMapping("/clients/{id}/save")
-    public String saveOrUpdate(@ModelAttribute ClientDto toSave, @PathVariable Long id, Model model) {
+    public String updateClient(@ModelAttribute ClientDto toSave, @PathVariable Long id, Model model) {
 
         clientService.updateClient(id, toSave);
 

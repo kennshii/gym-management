@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/../static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/client_edit.css}" href="/../static/css/client_edit.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,13 +55,31 @@
 </div>
 <!-- sidebar -->
 <section class="home-section" id="home">
-    <div class="text">Dashboard</div><br>
-    <div class="text">Some monthly statistics based on this values</div><br>
-    <div class="text">CLIENTS: 12312312</div>
-    <div class="text">TOTAL VISITS: 45685231</div>
-    <div class="text">ACTIVE MEMBERSHIPS: 1231312</div>
+    <div class="membership-info">
+        <h1>Create new client</h1>
+        <form th:action="@{/clients/new/save}" th:object="${client}" method="post" class="membership-info__form">
+            <div class="membership-info__field">
+                <label for="name" class="membership-info__label">Name:</label>
+                <input type="text" th:field="*{name}" id="name" class="membership-info__input">
+            </div>
+            <div class="membership-info__field">
+                <label for="email" class="membership-info__label">Email:</label>
+                <input type="email" th:field="*{email}" id="email" class="membership-info__input">
+            </div>
+            <div class="membership-info__field">
+                <label for="birthday" class="membership-info__label">Birthday:</label>
+                <input type="date" th:field="*{birthday}" id="birthday" class="membership-info__input">
+            </div>
+            <div class="membership-info__field">
+                <label for="phone" class="membership-info__label">Phone:</label>
+                <input type="text" th:field="*{phone}" id="phone" class="membership-info__input">
+            </div>
+            <button type="submit" class="membership-info__button">Save</button>
+        </form>
+    </div>
+
+
 </section>
-<script th:src="@{/js/layout_config.js}" src="/../static/js/layout_config.js">
-</script>
+<script th:src="@{/js/layout_config.js}" src="/../static/js/layout_config.js"></script>
 </body>
 </html>
