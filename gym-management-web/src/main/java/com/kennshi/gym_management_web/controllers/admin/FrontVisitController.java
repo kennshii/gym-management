@@ -24,6 +24,26 @@ public class FrontVisitController {
         return "admin/clients/visits/visit_info";
     }
 
+    @GetMapping("/{clientId}/visits/new")
+    public String addVisitPage(@ModelAttribute VisitDto visitDto,
+                               @PathVariable Long clientId,
+                               Model model) {
+
+        model.addAttribute("client", clientFullController.getClientById(clientId));
+        model.addAttribute("visit", visitDto);
+
+        return "/admin/clients/visits/visit_add";
+    }
+
+    @PostMapping("/{clientId}/visits/new/save")
+    public String assignVisit(@ModelAttribute VisitDto visitDto,
+                              @PathVariable Long clientId) {
+
+        visitController.createNewVisit(clientId, visitDto);
+
+        return "redirect:/clients/{clientId}/visits";
+    }
+
     @GetMapping("{clientId}/visits/{visitId}/edit")
     public String editVisit(@ModelAttribute VisitDto visitDto,
                             @PathVariable Long clientId,

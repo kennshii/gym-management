@@ -59,7 +59,7 @@
 
 <section class="home-section" id="home">
   <div class="membership-info">
-    <h2 class="membership-info__title">Edit Membership Info</h2>
+    <h2 class="membership-info__title">Create Membership</h2>
     <form th:object="${membership}" th:action="@{/clients/{clientId}/memberships/new/save(clientId=${client.id})}" method="post" class="membership-info__form">
       <div class="membership-info__field">
         <label for="clientName" class="membership-info__label">Client Name:</label>
