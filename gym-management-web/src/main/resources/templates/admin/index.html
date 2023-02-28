@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/../static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,13 +57,43 @@
 </div>
 <!-- sidebar -->
 <section class="home-section" id="home">
-    <div class="text">Dashboard</div><br>
-    <div class="text">Some monthly statistics based on this values</div><br>
-    <div class="text">CLIENTS: 12312312</div>
-    <div class="text">TOTAL VISITS: 45685231</div>
-    <div class="text">ACTIVE MEMBERSHIPS: 1231312</div>
+    <div class="text">Some estimated monthly statistics</div><br>
+    <canvas id="myChart" style="width:100%;max-width:700px;margin: auto;"></canvas>
 </section>
 <script th:src="@{/js/layout_config.js}" src="/../static/js/layout_config.js">
+</script>
+<script>
+    var xValues = [1,2,3,4,5,6,7,8,9,10,11,12];
+
+    new Chart("myChart", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: 'Clients',
+                data: [5, 10, 15, 20, 25, 30, 35, 45],
+                borderColor: "black",
+                fill: false,
+            },{
+                label: 'Memberships',
+                data: [5, 12, 18, 22, 30, 40, 44, 50],
+                borderColor: "red",
+                fill: false
+            },{
+                label: 'Visits',
+                data: [60, 140, 212, 132, 320, 228, 113, 321],
+                borderColor: "purple",
+                fill: false
+            }]
+        },
+        options: {
+            legend: {
+
+                display: true
+
+            }
+        }
+    });
 </script>
 </body>
 </html>

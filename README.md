@@ -1,4 +1,4 @@
-# Gym Management REST API
+# Gym Management App
 This is a REST API for a gym management system, developed using the Spring framework.
 
 ## Requirements
