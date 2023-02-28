@@ -1,5 +1,5 @@
 # Gym Management App
-This is a REST API for a gym management system, developed using the Spring framework.
+This is a Web App for a gym management system, divided in 2 submodules: API and WEB side. Developed using the Spring framework.
 
 ## Requirements
 - Java 19
@@ -16,8 +16,26 @@ $ mvn clean install
 $ cd gym-management-web 
 $ mvn spring-boot:run
 ```
-3. The API will be available at http://localhost:8080/
 
+- The API will be available at http://localhost:8080/
+- Front end part will be available at http://localhost:8080/menu
+
+## Web interface
+- Main page
+![Main page](documentation_src/front/main_page.png "Main page")
+- Clients page
+![Clients page](documentation_src/front/clients_page.png "Clients page")
+- Client info
+![Clients info](documentation_src/front/client_info.png "Client info")
+- Client visits
+![Clients visits](documentation_src/front/client_visits.png)
+- Client memberships
+![Clients memberships](documentation_src/front/client_memberships.png)
+- Membership plans page
+![Membership plans page](documentation_src/front/membership_plans.png "Membership plans page")
+
+
+# REST API DESCRIPTION
 ## Entity relationship diagram
 ![Entity relationship](documentation_src/img/img.png "EntityDiagram")
 
