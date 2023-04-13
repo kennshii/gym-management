@@ -5,6 +5,7 @@ import com.kennshi.gym_management_rest.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,19 +33,19 @@ public class ClientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ClientDto createNewClient(@RequestBody ClientDto clientDto) {
+    public ClientDto createNewClient(@Validated @RequestBody ClientDto clientDto) {
         return clientService.createNewClient(clientDto);
     }
 
     @PutMapping("/{clientId}")
     @ResponseStatus(HttpStatus.OK)
-    public ClientDto updateClient(@PathVariable Long clientId,@RequestBody ClientDto clientDto) {
+    public ClientDto updateClient(@PathVariable Long clientId,@Validated @RequestBody ClientDto clientDto) {
         return clientService.updateClient(clientId, clientDto);
     }
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ClientDto patchClient(@PathVariable Long id ,@RequestBody ClientDto clientDto) {
+    public ClientDto patchClient(@PathVariable Long id ,@Validated @RequestBody ClientDto clientDto) {
         return clientService.patchClient(id, clientDto);
     }
 
